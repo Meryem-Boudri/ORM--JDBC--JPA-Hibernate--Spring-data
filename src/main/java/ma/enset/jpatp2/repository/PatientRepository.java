@@ -2,6 +2,8 @@ package ma.enset.jpatp2.repository;
 
 import jakarta.transaction.Transactional;
 import ma.enset.jpatp2.entities.Patient;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +20,5 @@ Patient findByNom(String nom);
    @Query("select p from Patient p  where p.date between :x and :y or p.nom like :z")
    List<Patient>chercherPatient(@Param("x") Date d1, @Param("y") Date d2, @Param("z") String nom);
 
+   Page<Patient> findByNomContains(String keyword,Pageable pageable);
 }

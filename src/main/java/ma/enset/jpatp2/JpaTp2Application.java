@@ -35,45 +35,45 @@ public class JpaTp2Application {
         SpringApplication.run(JpaTp2Application.class, args);
     }
 
-    @Bean
-    CommandLineRunner start(HospitaleServiceImpl service,MedecinRepository medecinRepository,RDVRepository rdvRepository,ConsultationRepository consultationRepository, PatientRepository patientRepository) {
-        return args -> {
+//    @Bean
+//    CommandLineRunner start(HospitaleServiceImpl service,MedecinRepository medecinRepository,RDVRepository rdvRepository,ConsultationRepository consultationRepository, PatientRepository patientRepository) {
+//        return args -> {
+//
+//            Stream.of("Meryem", "yassmine", "Mohammed").forEach(p -> {
+//
+//                Patient patient = new Patient();
+//                patient.setDate(new Date());
+//                patient.setNom(p);
+//                patient.setMalade(false);
+//                service.savePatient(patient);
+//            });
 
-            Stream.of("Meryem", "yassmine", "Mohammed").forEach(p -> {
+//            Stream.of("Meryem", "yassmine", "Mohammed").forEach(p -> {
+//
+//                Medecin medecin = new Medecin();
+//                medecin.setNom(p);
+//                medecin.setSpecialite(Math.random() > 0.5 ? "Cardio" : "Dentiste");
+//                service.saveMedecin(medecin);
+//            });
 
-                Patient patient = new Patient();
-                patient.setDate(new Date());
-                patient.setNom(p);
-                patient.setMalade(false);
-                service.savePatient(patient);
-            });
+//            Patient patient = patientRepository.findByNom("Meryem");
+//            Medecin medecin = medecinRepository.findByNom("yassmine");
+//            RDV rdv = new RDV();
+//            rdv.setDate(new Date());
+//            rdv.setStatus(SatatusRDV.PENDING);
+//            rdv.setPatient(patient);
+//            rdv.setMedecin(medecin);
 
-            Stream.of("Meryem", "yassmine", "Mohammed").forEach(p -> {
-
-                Medecin medecin = new Medecin();
-                medecin.setNom(p);
-                medecin.setSpecialite(Math.random() > 0.5 ? "Cardio" : "Dentiste");
-                service.saveMedecin(medecin);
-            });
-
-            Patient patient = patientRepository.findByNom("Meryem");
-            Medecin medecin = medecinRepository.findByNom("yassmine");
-            RDV rdv = new RDV();
-            rdv.setDate(new Date());
-            rdv.setStatus(SatatusRDV.PENDING);
-            rdv.setPatient(patient);
-            rdv.setMedecin(medecin);
-
-            service.saveRDV(rdv);
-
-            RDV rdv1 = rdvRepository.findById(1L).get();
-            Consultation consultation = new Consultation();
-            consultation.setRendezVous(rdv1);
-            consultation.setDateConsultation(new Date());
-            consultation.setRapportConsultation("Rapport de consultation ....");
-            service.saveConsultation(consultation);
-
-
-        };
-    }
+//            service.saveRDV(rdv);
+//
+//            RDV rdv1 = rdvRepository.findById(1L).get();
+//            Consultation consultation = new Consultation();
+//            consultation.setRendezVous(rdv1);
+//            consultation.setDateConsultation(new Date());
+//            consultation.setRapportConsultation("Rapport de consultation ....");
+//            service.saveConsultation(consultation);
+//
+//
+//        };
+//    }
 }
