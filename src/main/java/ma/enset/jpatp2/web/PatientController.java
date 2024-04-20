@@ -23,7 +23,7 @@ public class PatientController {
     @Autowired
     private PatientRepository patientRepository;
 
-    @GetMapping("/index")
+    @GetMapping("/user/index")
     public String index(Model model,
                         @RequestParam(name = "page", defaultValue = "0") int page,
                         @RequestParam(name = "size", defaultValue = "4") int size,
@@ -40,24 +40,24 @@ public class PatientController {
         return "patients";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(Long id, String kw, int page) {
         patientRepository.deleteById(id);
-        return "redirect:/index?page=" + page + "&keyword" + kw; //redirection
+        return "redirect:/user/index?page=" + page + "&keyword" + kw; //redirection
     }
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/index"; //redirection
+        return "redirect:/user/index"; //redirection
     }
 
-    @GetMapping("/formPatients")
+    @GetMapping("/admin/formPatients")
     public String formPatients(Model model) {
         model.addAttribute("patient", new Patient());
         return "formPatients";
     }
 
-    @PostMapping(path = "/save")
+    @PostMapping(path = "/admin/save")
     public String save(Model model, @Valid Patient patient, BindingResult bindingResult,
                        @RequestParam(name = "page", defaultValue = "0") int page,
                        @RequestParam(name = "keyword", defaultValue = "") String kw
@@ -65,11 +65,11 @@ public class PatientController {
 
         if (bindingResult.hasErrors()) return "formPatients";
         patientRepository.save(patient);
-        return "redirect:/index?page="+page+"&keyword="+kw; //mieux de construire nouvelle page pour dire au utilisateur c'est bien saisi
+        return "redirect:/user/index?page="+page+"&keyword="+kw; //mieux de construire nouvelle page pour dire au utilisateur c'est bien saisi
 //etapes de validation: ajouter la dependace - ajouter les annotations de validation "beans" - @valid et bindingResult "controller" - th errors "html"
     }
 
-    @GetMapping("/editPatient")
+    @GetMapping("/admin/editPatient")
     public String editPatient(Model model, Long id , String keyword, int page ) {
         Patient patient=patientRepository.findById(id).orElse(null);
         if(patient==null){

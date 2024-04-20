@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.utraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1"
+> <!--je vais decorer patients avec template1-->
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des patients</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.11.3/font/bootstrap-icons.css">
+
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="alert alert-danger m-3">
+        <h2>NOT AUTHORIZED</h2>
+    </div>
+</div>
+
+</body>
+</html>
